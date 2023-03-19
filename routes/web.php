@@ -38,8 +38,8 @@ Route::middleware('auth')->group(function () {
     // Booking
     Route::get('/booking', [BookingController::class, 'index'])->name('booking.index');
     Route::get('/booking/create', [BookingController::class, 'create'])->name('booking.create');
-    Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');
     Route::get('/booking/edit/{id}', [BookingController::class, 'edit'])->name('booking.edit');
+    Route::post('/booking/update', [BookingController::class, 'update'])->name('booking.update');
 });
 
 require __DIR__ . '/auth.php';

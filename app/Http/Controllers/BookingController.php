@@ -33,14 +33,10 @@ class BookingController extends Controller
 
     public function create()
     {
-        return Inertia::render('Booking/Create');
-    }
-
-    public function store(BookingRequest $request)
-    {
-        Booking::create($request->validated());
-
-        return Redirect::route('booking.index');
+        return Inertia::render('Booking/Edit', [
+            'booking' => null,
+            'edit_mode' => false,
+        ]);
     }
 
     public function edit($id)
@@ -48,7 +44,20 @@ class BookingController extends Controller
         $booking = Booking::find($id);
 
         return Inertia::render('Booking/Edit', [
-            'booking' => $booking
+            'booking' => $booking,
+            'edit_mode' => true,
         ]);
+    }
+
+    public function update(BookingRequest $request)
+    {
+        $booking = Booking::find($request->booking_id);
+        if ($booking) {
+            $booking->update($request->validated());
+        } else {
+            Booking::create($request->validated());
+        }
+
+        return Redirect::route('booking.index');
     }
 }

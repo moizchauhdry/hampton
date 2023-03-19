@@ -27,6 +27,7 @@ return new class extends Migration
 
             $table->float('price')->nullable();
             $table->float('tip')->nullable();
+            $table->float('toll')->nullable();
             $table->float('process_fee')->nullable();
             $table->float('discount')->nullable();
 

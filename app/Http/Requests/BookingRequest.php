@@ -38,6 +38,7 @@ class BookingRequest extends FormRequest
 
             'price' => ['required', 'numeric'],
             'tip' => ['required', 'numeric'],
+            'toll' => ['required', 'numeric'],
             'process_fee' => ['required', 'numeric'],
             'discount' => ['required', 'numeric'],
 
