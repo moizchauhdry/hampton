@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\BookingRequest;
+use App\Mail\BookingMail;
 use App\Models\Booking;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
+use PDF;
 
 class BookingController extends Controller
 {
@@ -51,7 +54,22 @@ class BookingController extends Controller
 
     public function update(BookingRequest $request)
     {
-        Booking::updateOrCreate(['id' => $request->booking_id], $request->validated());
+        $booking = Booking::updateOrCreate(['id' => $request->booking_id], $request->validated());
+        Mail::to($booking->user_email)->send(new BookingMail($booking));
+
         return Redirect::route('booking.index');
+    }
+
+    public function pdf($id)
+    {
+        $booking = Booking::find($id);
+
+        view()->share([
+            'booking' => $booking,
+        ]);
+
+        $pdf = PDF::loadView('pdf.booking');
+        $pdf->setPaper('A4', 'portrait');
+        return $pdf->stream('booking.pdf');
     }
 }
