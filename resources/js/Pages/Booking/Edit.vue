@@ -4,8 +4,10 @@ import InputError from "@/Components/InputError.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import TextInput from "@/Components/TextInput.vue";
-import { Link, useForm, usePage } from "@inertiajs/vue3";
-import DangerButton from "@/Components/DangerButton.vue";
+import { Head, Link, useForm, usePage } from "@inertiajs/vue3";
+
+import VueDatePicker from "@vuepic/vue-datepicker";
+import "@vuepic/vue-datepicker/dist/main.css";
 
 const props = defineProps({
     edit_mode: Boolean,
@@ -49,7 +51,7 @@ const submit = () => {
 </script>
 
 <template>
-    <Head title="Create Booking" />
+    <Head :title="edit_mode ? 'Edit Booking' : 'Create Booking'" />
 
     <AuthenticatedLayout>
         <template #header>
@@ -346,14 +348,11 @@ const submit = () => {
                                         value=" Booking Date"
                                     />
 
-                                    <TextInput
-                                        id="booking_date"
-                                        type="date"
-                                        class="mt-1 block w-full"
+                                    <VueDatePicker
                                         v-model="form.booking_date"
-                                        required
-                                        autofocus
-                                    />
+                                        :teleport="true"
+                                        class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full"
+                                    ></VueDatePicker>
 
                                     <InputError
                                         class="mt-2"
@@ -447,7 +446,7 @@ const submit = () => {
 
                             <div class="flex items-center gap-2">
                                 <PrimaryButton :disabled="form.processing">
-                                    {{ edit_mode ? "Save" : "Update" }}
+                                    {{ edit_mode ? "Update" : "Save" }}
                                 </PrimaryButton>
 
                                 <Link

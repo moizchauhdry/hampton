@@ -51,13 +51,7 @@ class BookingController extends Controller
 
     public function update(BookingRequest $request)
     {
-        $booking = Booking::find($request->booking_id);
-        if ($booking) {
-            $booking->update($request->validated());
-        } else {
-            Booking::create($request->validated());
-        }
-
+        Booking::updateOrCreate(['id' => $request->booking_id], $request->validated());
         return Redirect::route('booking.index');
     }
 }
