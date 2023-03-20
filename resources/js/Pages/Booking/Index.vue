@@ -12,21 +12,22 @@ defineProps({
 
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Booking
-            </h2>
-        </template>
+            <div class="pb-5">
+                <h2
+                    class="float-left font-semibold text-xl text-gray-800 leading-tight"
+                >
+                    Booking
+                </h2>
 
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="mt-4">
                 <Link
-                    class="focus:outline-none text-white bg-green-600 hover:bg-green-500 focus:ring-2 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-green-900"
+                    class="float-right focus:outline-none text-white bg-green-500 hover:bg-green-600 focus:ring-2 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-1.5 mr-2 mb-2 dark:focus:ring-green-900"
                     :href="route('booking.create')"
                     >Add Booking</Link
                 >
             </div>
-        </div>
-        <div class="py-6">
+        </template>
+
+        <div class="py-6 px-3">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="relative overflow-x-auto">
@@ -78,7 +79,7 @@ defineProps({
                                     </td>
                                     <td class="px-6 py-4">
                                         <Link
-                                            class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-2 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900"
+                                            class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-2 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-1 mr-2 mb-2 dark:focus:ring-yellow-900"
                                             :href="
                                                 route(
                                                     'booking.edit',
@@ -91,7 +92,7 @@ defineProps({
                                             :href="
                                                 route('booking.pdf', booking.id)
                                             "
-                                            class="focus:outline-none text-white bg-purple-500 hover:bg-purple-600 focus:ring-2 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-purple-900"
+                                            class="focus:outline-none text-white bg-purple-500 hover:bg-purple-600 focus:ring-2 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-1 mr-2 mb-2 dark:focus:ring-purple-900"
                                             target="_blank"
                                             >Invoice</a
                                         >
