@@ -55,7 +55,11 @@ class BookingController extends Controller
     public function update(BookingRequest $request)
     {
         $booking = Booking::updateOrCreate(['id' => $request->booking_id], $request->validated());
-        Mail::to($booking->user_email)->send(new BookingMail($booking));
+        try {
+            Mail::to($booking->user_email)->send(new BookingMail($booking));
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
 
         return Redirect::route('booking.index');
     }
