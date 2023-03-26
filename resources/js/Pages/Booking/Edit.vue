@@ -8,6 +8,7 @@ import { Head, Link, useForm, usePage } from "@inertiajs/vue3";
 
 import VueDatePicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
+import Multiselect from "@vueform/multiselect";
 
 const props = defineProps({
     edit_mode: Boolean,
@@ -15,6 +16,23 @@ const props = defineProps({
 });
 
 const booking = usePage().props.booking;
+
+var vehicles = [
+    { value: "1", label: "Vehicle 1" },
+    { value: "2", label: "Vehicle 2" },
+    { value: "3", label: "Vehicle 3" },
+];
+
+var booking_plans = [
+    { value: "1", label: "Plan 1" },
+    { value: "2", label: "Plan 2" },
+    { value: "3", label: "Plan 3" },
+];
+
+var payment_types = [
+    { value: "1", label: "Cash Paymet" },
+    { value: "2", label: "Credit Card" },
+];
 
 const form = useForm({
     booking_id: booking?.id,
@@ -50,6 +68,8 @@ const submit = () => {
 };
 </script>
 
+<style src="@vueform/multiselect/themes/default.css"></style>
+
 <template>
     <Head :title="edit_mode ? 'Edit Booking' : 'Create Booking'" />
 
@@ -65,7 +85,9 @@ const submit = () => {
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900">
                         <form @submit.prevent="submit()" class="mt-6 space-y-6">
-                            <div class="grid gap-4 grid-cols-3 grid-rows-1">
+                            <div
+                                class="grid gap-4 lg:grid-cols-3 md:grid-cols-2 grid-rows-1"
+                            >
                                 <div>
                                     <InputLabel for="user_name" value="Name" />
 
@@ -124,7 +146,9 @@ const submit = () => {
                                 </div>
                             </div>
 
-                            <div class="grid gap-4 grid-cols-2 grid-rows-1">
+                            <div
+                                class="grid gap-4 lg:grid-cols-2 md:grid-cols-2 grid-rows-1"
+                            >
                                 <div>
                                     <InputLabel for="pickup" value="Pickup" />
 
@@ -164,7 +188,9 @@ const submit = () => {
                                 </div>
                             </div>
 
-                            <div class="grid gap-4 grid-cols-4 grid-rows-1">
+                            <div
+                                class="grid gap-4 lg:grid-cols-4 md:grid-cols-2 grid-rows-1"
+                            >
                                 <div>
                                     <InputLabel
                                         for="passengers_no"
@@ -247,7 +273,9 @@ const submit = () => {
                                 </div>
                             </div>
 
-                            <div class="grid gap-4 grid-cols-5 grid-rows-1">
+                            <div
+                                class="grid gap-4 lg:grid-cols-5 md:grid-cols-2 grid-rows-1"
+                            >
                                 <div>
                                     <InputLabel for="price" value="Price" />
 
@@ -341,17 +369,19 @@ const submit = () => {
                                 </div>
                             </div>
 
-                            <div class="grid gap-4 grid-cols-4 grid-rows-1">
+                            <div
+                                class="grid gap-4 lg:grid-cols-4 md:grid-cols-2 grid-rows-1"
+                            >
                                 <div>
                                     <InputLabel
                                         for="booking_date"
                                         value=" Booking Date"
+                                        class="mb-1"
                                     />
 
                                     <VueDatePicker
                                         v-model="form.booking_date"
                                         :teleport="true"
-                                        class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full"
                                     ></VueDatePicker>
 
                                     <InputError
@@ -364,16 +394,13 @@ const submit = () => {
                                     <InputLabel
                                         for="vehicle_name"
                                         value="Vehicle"
+                                        class="mb-1"
                                     />
 
-                                    <select
-                                        class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full"
+                                    <Multiselect
                                         v-model="form.vehicle_name"
-                                    >
-                                        <option value="">Select Vehicle</option>
-                                        <option value="1">Vehicle 1</option>
-                                        <option value="2">Vehicle 2</option>
-                                    </select>
+                                        :options="vehicles"
+                                    />
 
                                     <InputError
                                         class="mt-2"
@@ -385,16 +412,13 @@ const submit = () => {
                                     <InputLabel
                                         for="booking_plan"
                                         value="Plan"
+                                        class="mb-1"
                                     />
 
-                                    <select
-                                        class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full"
+                                    <Multiselect
                                         v-model="form.booking_plan"
-                                    >
-                                        <option value="">Select Plan</option>
-                                        <option value="1">Plan 1</option>
-                                        <option value="2">Plan 2</option>
-                                    </select>
+                                        :options="booking_plans"
+                                    />
 
                                     <InputError
                                         class="mt-2"
@@ -406,16 +430,13 @@ const submit = () => {
                                     <InputLabel
                                         for="payment_type"
                                         value="Payment Type"
+                                        class="mb-1"
                                     />
 
-                                    <select
-                                        class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full"
+                                    <Multiselect
                                         v-model="form.payment_type"
-                                    >
-                                        <option value="">Payment Type</option>
-                                        <option value="1">Credit Card</option>
-                                        <option value="2">Cash Payment</option>
-                                    </select>
+                                        :options="payment_types"
+                                    />
 
                                     <InputError
                                         class="mt-2"
@@ -424,7 +445,9 @@ const submit = () => {
                                 </div>
                             </div>
 
-                            <div class="grid gap-4 grid-cols-1 grid-rows-1">
+                            <div
+                                class="grid gap-4 lg:grid-cols-1 md:grid-cols-2 grid-rows-1"
+                            >
                                 <div>
                                     <InputLabel
                                         for="additional_msg"

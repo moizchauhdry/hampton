@@ -17,6 +17,7 @@
         "vue": "^3.2.41"
     },
     "dependencies": {
+        "@vueform/multiselect": "^2.6.1",
         "@vuepic/vue-datepicker": "^4.2.2"
     }
 }
