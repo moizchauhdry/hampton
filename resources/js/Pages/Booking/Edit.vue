@@ -42,7 +42,7 @@ var booking_plans = [
 
 var payment_types = [
     { value: "Credit Card", label: "Credit Card" },
-    { value: "Cash Paymet", label: "Cash Paymet" },
+    { value: "Cash Payment", label: "Cash Payment" },
 ];
 
 const form = useForm({
