@@ -18,20 +18,31 @@ const props = defineProps({
 const booking = usePage().props.booking;
 
 var vehicles = [
-    { value: "1", label: "Vehicle 1" },
-    { value: "2", label: "Vehicle 2" },
-    { value: "3", label: "Vehicle 3" },
+    { value: "Black Car Service", label: "Black Car Service" },
+    {
+        value: "Executive Black Car Service",
+        label: "Executive Black Car Service",
+    },
+    { value: "Black SUV Service", label: "Black SUV Service" },
+    { value: "Strech limo", label: "Strech limo" },
+    { value: "Van", label: "Van" },
+    { value: "Bus", label: "Bus" },
+    { value: "Sprinter", label: "Sprinter" },
 ];
 
 var booking_plans = [
-    { value: "1", label: "Plan 1" },
-    { value: "2", label: "Plan 2" },
-    { value: "3", label: "Plan 3" },
+    { value: "Airport Pick up", label: "Airport Pick up" },
+    { value: "Airport Drop off", label: "Airport Drop off" },
+    { value: "Sight Seeing", label: "Sight Seeing" },
+    { value: "Nightout", label: "Nightout" },
+    { value: "Wedding", label: "Wedding" },
+    { value: "Bachelor Party", label: "Bachelor Party" },
+    { value: "Others (As Directed)", label: "Others (As Directed)" },
 ];
 
 var payment_types = [
-    { value: "1", label: "Cash Paymet" },
-    { value: "2", label: "Credit Card" },
+    { value: "Credit Card", label: "Credit Card" },
+    { value: "Cash Paymet", label: "Cash Paymet" },
 ];
 
 const form = useForm({

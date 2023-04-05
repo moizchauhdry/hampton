@@ -16,7 +16,7 @@ class BookingController extends Controller
 {
     public function index()
     {
-        $bookings = Booking::paginate(10)
+        $bookings = Booking::orderBy('id', 'desc')->paginate(10)
             ->withQueryString()
             ->through(fn ($booking) => [
                 'id' => $booking->id,

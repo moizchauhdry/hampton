@@ -80,22 +80,22 @@
     </tr>
     <tr>
         <th>Price</th>
-        <td>{{$booking->price}}</td>
+        <td>${{$booking->price}}</td>
     </tr>
     <tr>
         <th>Tip</th>
-        <td>{{$booking->tip}}</td>
+        <td>${{$booking->tip}}</td>
     </tr>
     <tr>
         <th>Toll</th>
-        <td>{{$booking->toll}}</td>
+        <td>${{$booking->toll}}</td>
     </tr>
     <tr>
         <th>Processing Fee</th>
-        <td>{{$booking->process_fee}}</td>
+        <td>${{$booking->process_fee}}</td>
     </tr>
     <tr>
         <th>Discount</th>
-        <td>{{$booking->discount}}</td>
+        <td>${{$booking->discount}}</td>
     </tr>
 </table>
