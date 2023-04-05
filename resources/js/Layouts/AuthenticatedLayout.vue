@@ -154,6 +154,16 @@ const showingNavigationDropdown = ref(false);
                         >
                             Dashboard
                         </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            :href="route('booking.index')"
+                            :active="
+                                route().current('booking.index') ||
+                                route().current('booking.create') ||
+                                route().current('booking.edit')
+                            "
+                        >
+                            Booking
+                        </ResponsiveNavLink>
                     </div>
 
                     <!-- Responsive Settings Options -->

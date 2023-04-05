@@ -25,13 +25,13 @@ defineProps({
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <!-- <div class="p-6 text-gray-900">You're logged in!</div> -->
                     <div
-                        class="p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800"
+                        class="p-4 bg-white rounded-lg md:p-8"
                         id="stats"
                         role="tabpanel"
                         aria-labelledby="stats-tab"
                     >
                         <dl
-                            class="grid max-w-screen-xl grid-cols-2 gap-8 p-4 mx-auto text-gray-900 sm:grid-cols-2 xl:grid-cols-5 dark:text-white sm:p-8"
+                            class="grid max-w-screen-xl grid-cols-2 gap-8 p-4 mx-auto text-gray-900 sm:grid-cols-2 xl:grid-cols-5 sm:p-8"
                         >
                             <div
                                 class="flex flex-col items-center justify-center"
