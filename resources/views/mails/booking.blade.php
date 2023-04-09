@@ -1,5 +1,7 @@
 @extends('mails.layout')
 
+@section('content')
+
 <style>
     .table table,
     .table th,
@@ -28,7 +30,6 @@
         text-decoration: none;
     }
 </style>
-@section('content')
 
 <div style="margin-top:20px; margin-bottom:20px">
     @include('pdf.partials.booking')
