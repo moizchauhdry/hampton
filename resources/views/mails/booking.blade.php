@@ -12,7 +12,7 @@
 
     .paynow-button {
         background-color: #0070C0;
-        color: white;
+        color: white !important;
         border: none;
         border-radius: 5px;
         font-size: 16px;
