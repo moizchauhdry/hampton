@@ -1,7 +1,6 @@
 @extends('mails.layout')
 
-@section('content')
-
+@section('styles')
 <style>
     .table table,
     .table th,
@@ -10,8 +9,29 @@
         padding: 5px;
         font-size: 14px;
     }
-</style>
 
+    .paynow-button {
+        background-color: #0070C0;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        padding: 10px 20px;
+        cursor: pointer;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .paynow-button:hover {
+        background-color: #005EA6;
+    }
+
+    a {
+        text-decoration: none;
+    }
+</style>
+@endsection
+
+@section('content')
 <div style="margin-top:20px; margin-bottom:20px">
     @include('pdf.partials.booking')
 </div>
