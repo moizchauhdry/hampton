@@ -36,7 +36,7 @@
 
 <div style="margin-top:20px; margin-bottom:20px">
     <a class="paynow-button"
-        href="https://hamptonchauffer.com/payment/checkout.php?pickup={{$booking->pickup}}&&destination={{$booking->destination}}&&amount={{$booking->price}}">Paynows</a>
+        href="https://hamptonchauffer.com/payment/checkout.php?pickup={{$booking->pickup}}&&destination={{$booking->destination}}&&amount={{$booking->price}}">Paynow</a>
 </div>
 
 @endsection
