@@ -61,7 +61,7 @@ class BookingController extends Controller
                 Mail::to($booking->user_email)->send(new BookingMail($booking));
             }
         } catch (\Throwable $th) {
-            //throw $th;
+            throw $th;
         }
 
         return Redirect::route('booking.index');
