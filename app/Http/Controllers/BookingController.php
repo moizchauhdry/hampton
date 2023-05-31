@@ -56,13 +56,13 @@ class BookingController extends Controller
     {
         $booking = Booking::updateOrCreate(['id' => $request->booking_id], $request->validated());
 
-        // try {
-        // if (!$request->booking_id) {
-        Mail::to($booking->user_email)->send(new BookingMail($booking));
-        // }
-        // } catch (\Throwable $th) {
-        // throw $th;
-        // }
+        try {
+            if (!$request->booking_id) {
+                Mail::to($booking->user_email)->send(new BookingMail($booking));
+            }
+        } catch (\Throwable $th) {
+            throw $th;
+        }
 
         return Redirect::route('booking.index');
     }
