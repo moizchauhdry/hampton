@@ -143,7 +143,7 @@ class BookingController extends Controller
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
             $response = curl_exec($curl);
         } catch (\Throwable $th) {
-            // dd($th);
+            dd($th);
         }
     }
 }
