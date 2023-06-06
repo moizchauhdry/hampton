@@ -58,7 +58,8 @@ class BookingController extends Controller
 
         try {
             if (!$request->booking_id) {
-                Mail::to($booking->user_email)->send(new BookingMail($booking));
+                // Mail::to($booking->user_email)->send(new BookingMail($booking));
+                $this->invoiceEmail($booking);
             }
         } catch (\Throwable $th) {
             throw $th;
@@ -78,5 +79,71 @@ class BookingController extends Controller
         $pdf = PDF::loadView('pdf.booking');
         $pdf->setPaper('A4', 'portrait');
         return $pdf->stream('booking.pdf');
+    }
+
+    private function invoiceEmail($booking)
+    {
+        try {
+
+            $booking_date = date('m/d/Y h:i A', strtotime($booking->booking_date));
+            $payment_url = 'https://highstarlimo.com/payment/checkout.php?pickup=' . $booking->pickup . "&&destination=" . $booking->destination . ' Booking Date: ' . $booking_date . '&&amount=' . $booking->price;
+
+            $data = [
+                "personalizations" => [
+                    [
+                        "to" => [
+                            [
+                                "email" => $booking->user_email
+                            ]
+                        ],
+                        "dynamic_template_data" => [
+                            "image_url" => 'https://admin.highstarlimo.com/public/images/logo.png',
+                            "confirmation_no" => $booking->id,
+                            "booking_date" => $booking_date,
+                            "pickup_location" => $booking->pickup,
+                            "dropoff_location" => $booking->destination,
+                            "flight_no" => $booking->flight_no,
+                            "vehicle" => $booking->vehicle_name,
+                            "payment_type" => $booking->payment_type,
+                            "base_fare" => $booking->price,
+                            "toll" => $booking->toll,
+                            "tip" => $booking->tip,
+                            "processing_fee" => $booking->process_fee,
+                            "discount" => $booking->discount,
+                            "price_charged" => $booking->price,
+                            "total_price" => $booking->price,
+                            "addt_msg" => $booking->additional_msg,
+                            // "price_reason" => $booking->price_reason,
+                            "payment_url" => $payment_url,
+                        ]
+                    ]
+                ],
+                "from" => [
+                    "email" => "info@hampton.com",
+                    "name" => "Highstarlimo"
+                ],
+                "subject" => "Booking Confirmation",
+                "content" => [
+                    ["type" => "text/html", "value" => "Booking Confirmation"]
+                ],
+                "template_id" =>  "d-5c2db11045904bb89823d89d13efa16c "
+            ];
+
+            $url = 'https://api.sendgrid.com/v3/mail/send';
+            $_data = json_encode($data);
+            $headers = array(
+                'Content-Type: application/json',
+                'Authorization:Bearer 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',
+            );
+
+            $curl = curl_init($url);
+            curl_setopt($curl, CURLOPT_POST, 1);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $_data);
+            curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+            $response = curl_exec($curl);
+        } catch (\Throwable $th) {
+            // dd($th);
+        }
     }
 }
