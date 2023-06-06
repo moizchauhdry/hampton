@@ -133,7 +133,7 @@ class BookingController extends Controller
             $_data = json_encode($data);
             $headers = array(
                 'Content-Type: application/json',
-                'Authorization:Bearer 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',
+                'Authorization:Bearer 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',
             );
 
             $curl = curl_init($url);
@@ -142,9 +142,8 @@ class BookingController extends Controller
             curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
             $response = curl_exec($curl);
-            dd($response);
         } catch (\Throwable $th) {
-            dd($th);
+            // dd($th);
         }
     }
 }
