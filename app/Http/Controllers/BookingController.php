@@ -86,7 +86,7 @@ class BookingController extends Controller
         try {
 
             $booking_date = date('m/d/Y h:i A', strtotime($booking->booking_date));
-            $payment_url = 'https://highstarlimo.com/payment/checkout.php?pickup=' . $booking->pickup . "&&destination=" . $booking->destination . ' Booking Date: ' . $booking_date . '&&amount=' . $booking->price;
+            $payment_url = 'https://hamptonchauffer.com/payment/checkout.php?pickup=' . $booking->pickup . "&&destination=" . $booking->destination . ' Booking Date: ' . $booking_date . '&&amount=' . $booking->price;
 
             $data = [
                 "personalizations" => [
@@ -97,7 +97,7 @@ class BookingController extends Controller
                             ]
                         ],
                         "dynamic_template_data" => [
-                            "image_url" => 'https://admin.highstarlimo.com/public/images/logo.png',
+                            "image_url" => 'https://app.hamptonchauffer.com/build/assets/logo-b01630e2.png',
                             "confirmation_no" => $booking->id,
                             "booking_date" => $booking_date,
                             "pickup_location" => $booking->pickup,
