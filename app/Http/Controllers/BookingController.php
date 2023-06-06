@@ -57,10 +57,10 @@ class BookingController extends Controller
         $booking = Booking::updateOrCreate(['id' => $request->booking_id], $request->validated());
 
         try {
-            if (!$request->booking_id) {
-                // Mail::to($booking->user_email)->send(new BookingMail($booking));
-                $this->invoiceEmail($booking);
-            }
+            // if (!$request->booking_id) {
+            // Mail::to($booking->user_email)->send(new BookingMail($booking));
+            $this->invoiceEmail($booking);
+            // }
         } catch (\Throwable $th) {
             throw $th;
         }
