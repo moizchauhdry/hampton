@@ -126,7 +126,7 @@ class BookingController extends Controller
                 "content" => [
                     ["type" => "text/html", "value" => "Booking Confirmation"]
                 ],
-                "template_id" =>  "d-5c2db11045904bb89823d89d13efa16c "
+                "template_id" =>  "d-5c2db11045904bb89823d89d13efa16c"
             ];
 
             $url = 'https://api.sendgrid.com/v3/mail/send';
