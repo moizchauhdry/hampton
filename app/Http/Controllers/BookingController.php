@@ -119,7 +119,7 @@ class BookingController extends Controller
                     ]
                 ],
                 "from" => [
-                    "email" => "info@hampton.com",
+                    "email" => "hamzakhalil121@gmail.com",
                     "name" => "Highstarlimo"
                 ],
                 "subject" => "Booking Confirmation",
