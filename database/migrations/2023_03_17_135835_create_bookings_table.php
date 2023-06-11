@@ -32,7 +32,7 @@ return new class extends Migration
             $table->float('discount')->default(0);
             $table->float('total_price')->default(0);
 
-            $table->timestamp('booking_date')->nullable();
+            $table->dateTime('booking_date')->nullable();
             $table->string('vehicle_name', 100)->nullable();
             $table->string('booking_plan', 100)->nullable();
             $table->string('payment_type', 100)->nullable();

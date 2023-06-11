@@ -26,7 +26,7 @@ class BookingController extends Controller
                 'pickup' => $booking->pickup,
                 'destination' => $booking->destination,
                 'price' => $booking->total_price,
-                'booking_date' => Carbon::parse($booking->booking_date)->format('d-m-Y, h:i:A'),
+                'booking_date' => Carbon::parse($booking->booking_date)->format('d-m-Y, h:i A'),
             ]);
 
         return Inertia::render('Booking/Index', [
@@ -71,6 +71,13 @@ class BookingController extends Controller
         return Redirect::route('booking.index');
     }
 
+    public function destroy(Request $request)
+    {
+        $booking = Booking::find($request->booking_id);
+        $booking->delete();
+
+        return redirect()->route('booking.index');
+    }
     public function pdf($id)
     {
         $booking = Booking::find($id);

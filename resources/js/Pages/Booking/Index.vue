@@ -1,10 +1,21 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import { Head, Link } from "@inertiajs/vue3";
+import { Head, Link, useForm } from "@inertiajs/vue3";
 
 defineProps({
     bookings: Object,
 });
+
+const form = useForm({
+    booking_id: null,
+});
+
+const deleteBooking = (id) => {
+    form.booking_id = id;
+    if (confirm("Are you sure you want to delete this record?")) {
+        form.post(route("booking.destroy"));
+    }
+};
 </script>
 
 <template>
@@ -96,6 +107,13 @@ defineProps({
                                             target="_blank"
                                             >Invoice</a
                                         >
+
+                                        <button
+                                            @click="deleteBooking(booking.id)"
+                                            class="focus:outline-none text-white bg-red-600 hover:bg-red-500 focus:ring-2 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-1 mr-2 mb-2 dark:focus:ring-red-900"
+                                        >
+                                            Delete
+                                        </button>
                                     </td>
                                 </tr>
                             </tbody>

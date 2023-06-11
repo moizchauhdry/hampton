@@ -5,10 +5,10 @@ import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import TextInput from "@/Components/TextInput.vue";
 import { Head, Link, useForm, usePage } from "@inertiajs/vue3";
-
 import VueDatePicker from "@vuepic/vue-datepicker";
 import "@vuepic/vue-datepicker/dist/main.css";
 import Multiselect from "@vueform/multiselect";
+import moment from "moment";
 
 const props = defineProps({
     edit_mode: Boolean,
@@ -73,6 +73,10 @@ const form = useForm({
 
     additional_msg: booking?.additional_msg,
 });
+
+const handleDate = (date) => {
+    form.booking_date = moment(date).format("YYYY-MM-DD HH:mm");
+};
 
 const submit = () => {
     form.post(route("booking.update"));
@@ -393,6 +397,8 @@ const submit = () => {
                                     <VueDatePicker
                                         v-model="form.booking_date"
                                         :teleport="true"
+                                        :is-24="false"
+                                        @update:model-value="handleDate"
                                     ></VueDatePicker>
 
                                     <InputError

@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/booking/create', [BookingController::class, 'create'])->name('booking.create');
     Route::get('/booking/edit/{id}', [BookingController::class, 'edit'])->name('booking.edit');
     Route::post('/booking/update', [BookingController::class, 'update'])->name('booking.update');
+    Route::post('/booking/destroy', [BookingController::class, 'destroy'])->name('booking.destroy');
     Route::get('/booking/pdf/{id}', [BookingController::class, 'pdf'])->name('booking.pdf');
 });
 
