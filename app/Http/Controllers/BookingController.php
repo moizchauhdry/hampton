@@ -25,7 +25,7 @@ class BookingController extends Controller
                 'user_phone' => $booking->user_phone,
                 'pickup' => $booking->pickup,
                 'destination' => $booking->destination,
-                'price' => $booking->price,
+                'price' => $booking->total_price,
                 'booking_date' => Carbon::parse($booking->booking_date)->format('d-m-Y, h:i:A'),
             ]);
 
@@ -55,12 +55,15 @@ class BookingController extends Controller
     public function update(BookingRequest $request)
     {
         $booking = Booking::updateOrCreate(['id' => $request->booking_id], $request->validated());
+        $booking->update([
+            'total_price' => ($request->price +  $request->tip +  $request->toll +  $request->process_fee) - $request->discount
+        ]);
 
         try {
-            // if (!$request->booking_id) {
-            // Mail::to($booking->user_email)->send(new BookingMail($booking));
-            $this->invoiceEmail($booking);
-            // }
+            if (!$request->booking_id) {
+                // Mail::to($booking->user_email)->send(new BookingMail($booking));
+                $this->invoiceEmail($booking);
+            }
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -110,10 +113,8 @@ class BookingController extends Controller
                             "tip" => $booking->tip,
                             "processing_fee" => $booking->process_fee,
                             "discount" => $booking->discount,
-                            "price_charged" => $booking->price,
-                            "total_price" => $booking->price,
+                            "total_price" => $booking->total_price,
                             "addt_msg" => $booking->additional_msg,
-                            // "price_reason" => $booking->price_reason,
                             "payment_url" => $payment_url,
                         ]
                     ]

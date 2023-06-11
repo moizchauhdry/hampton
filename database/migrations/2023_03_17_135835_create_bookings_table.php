@@ -25,11 +25,12 @@ return new class extends Migration
             $table->tinyInteger('vehicles_no')->nullable();
             $table->string('flight_no', 100)->nullable();
 
-            $table->float('price')->nullable();
-            $table->float('tip')->nullable();
-            $table->float('toll')->nullable();
-            $table->float('process_fee')->nullable();
-            $table->float('discount')->nullable();
+            $table->float('price')->default(0);
+            $table->float('tip')->default(0);
+            $table->float('toll')->default(0);
+            $table->float('process_fee')->default(0);
+            $table->float('discount')->default(0);
+            $table->float('total_price')->default(0);
 
             $table->timestamp('booking_date')->nullable();
             $table->string('vehicle_name', 100)->nullable();

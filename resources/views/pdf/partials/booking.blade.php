@@ -20,7 +20,7 @@
     </tr>
     <tr>
         <th>Email</th>
-        <td>{{$booking->user_name}}</td>
+        <td>{{$booking->user_email}}</td>
     </tr>
     <tr>
         <th>Phone</th>
@@ -97,5 +97,9 @@
     <tr>
         <th>Discount</th>
         <td>${{$booking->discount}}</td>
+    </tr>
+    <tr>
+        <th>Total Price</th>
+        <td>${{$booking->total_price}}</td>
     </tr>
 </table>
