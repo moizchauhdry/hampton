@@ -110,7 +110,7 @@ const deleteBooking = (id) => {
 
                                         <button
                                             @click="deleteBooking(booking.id)"
-                                            class="focus:outline-none text-white bg-red-600 hover:bg-red-500 focus:ring-2 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-1 mr-2 mb-2 dark:focus:ring-red-900"
+                                            class="mt-2 focus:outline-none text-white bg-red-600 hover:bg-red-500 focus:ring-2 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-1 mr-2 mb-2 dark:focus:ring-red-900"
                                         >
                                             Delete
                                         </button>
