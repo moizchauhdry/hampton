@@ -120,7 +120,22 @@ const deleteBooking = (id) => {
                         </table>
                     </div>
                 </div>
+
+                <div class="my-3">
+                    <template v-for="link in bookings.links">
+                        <Link
+                            v-if="link.url"
+                            :href="link.url"
+                            v-html="link.label"
+                            class="mr-1 mb-1 px-3 py-2 text-sm leading-4 text-gray-600 rounded"
+                            :class="{ 'bg-blue-700 text-white': link.active, 'border hover:bg-white': !link.active }"
+                        />
+                    </template>
+                </div>
             </div>
+
         </div>
+
+
     </AuthenticatedLayout>
 </template>
