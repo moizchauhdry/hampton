@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\BookingRequest;
 use App\Mail\BookingMail;
 use App\Models\Booking;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -78,6 +79,7 @@ class BookingController extends Controller
 
         return redirect()->route('booking.index');
     }
+    
     public function pdf($id)
     {
         $booking = Booking::find($id);
@@ -153,5 +155,46 @@ class BookingController extends Controller
         } catch (\Throwable $th) {
             // dd($th);
         }
+    }
+    
+    public function sms($id)
+    {
+        try {
+            $booking = Booking::find($id);
+            $booking_date = date('m/d/Y h:i A', strtotime($booking->booking_date));
+            $payment_url = 'https://app.hamptonschauffeur.com/payment/checkout.php?pickup=' . $booking->pickup . "&&destination=" . $booking->destination . ' Booking Date: ' . $booking_date . '&&amount=' . $booking->total_price;
+
+            $username = 'ACd250ef8c6843ce407b2ec06c761b609a';
+            $password = 'efe656ccabaf7e240bdb8fbfa940f83c';
+
+            $url = 'https://api.twilio.com/2010-04-01/Accounts/ACd250ef8c6843ce407b2ec06c761b609a/Messages.json';
+
+            $data = array(
+                'To' => $booking->user_phone,
+                'From' => '+18335140194',
+                'Body' => $payment_url
+            );
+
+            $body = http_build_query($data);
+
+            $headers = array(
+                'Content-Type: application/x-www-form-urlencoded',
+                'Authorization: Basic ' . base64_encode($username . ':' . $password)
+            );
+
+            $ch = curl_init($url);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+            $response = curl_exec($ch);
+            dd($response);
+            curl_close($ch);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+       
+        return redirect()->back()->with('message', 'The sms have been sent successfully.');
     }
 }

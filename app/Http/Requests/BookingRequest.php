@@ -26,7 +26,7 @@ class BookingRequest extends FormRequest
         return [
             'user_name' => ['required', 'string', 'max:255'],
             'user_email' => ['required', 'email', 'max:255'],
-            'user_phone' => ['required', 'string', 'max:255'],
+            'user_phone' => ['required', 'string', 'regex:/^\+1\d{10}$/'],
 
             'pickup' => ['required', 'string', 'max:255'],
             'destination' => ['required', 'string', 'max:255'],
@@ -48,6 +48,13 @@ class BookingRequest extends FormRequest
             'payment_type' => ['required', 'string', 'max:255'],
 
             'additional_msg' => ['required', 'string', 'max:5000'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'user_phone.regex' => 'The user phone field format is invalid.',
         ];
     }
 }

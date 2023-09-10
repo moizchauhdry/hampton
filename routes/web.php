@@ -42,6 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/booking/update', [BookingController::class, 'update'])->name('booking.update');
     Route::post('/booking/destroy', [BookingController::class, 'destroy'])->name('booking.destroy');
     Route::get('/booking/pdf/{id}', [BookingController::class, 'pdf'])->name('booking.pdf');
+    Route::get('/booking/smd/{id}', [BookingController::class, 'sms'])->name('booking.sms');
 });
 
 require __DIR__ . '/auth.php';
