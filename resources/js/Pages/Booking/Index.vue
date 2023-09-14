@@ -85,14 +85,16 @@ const deleteBooking = (id) => {
                                             class="focus:outline-none text-white bg-purple-500 hover:bg-purple-600 focus:ring-2 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-1 mr-2 mb-2 dark:focus:ring-purple-900"
                                             target="_blank">Invoice</a>
 
+
+                                        <a :href="route('booking.sms', booking.id)"
+                                            class="focus:outline-none text-white bg-green-500 hover:bg-green-600 focus:ring-2 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-1 mr-2 mb-2 dark:focus:ring-green-900">
+                                            SMS</a>
+
+
                                         <button @click="deleteBooking(booking.id)"
                                             class="mt-2 focus:outline-none text-white bg-red-600 hover:bg-red-500 focus:ring-2 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-1 mr-2 mb-2 dark:focus:ring-red-900">
                                             Delete
                                         </button>
-
-                                        <a :href="route('booking.sms', booking.id)"
-                                            class="focus:outline-none text-white bg-purple-500 hover:bg-purple-600 focus:ring-2 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-1 mr-2 mb-2 dark:focus:ring-purple-900">Send
-                                            SMS</a>
                                     </td>
                                 </tr>
                             </tbody>

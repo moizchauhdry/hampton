@@ -189,7 +189,6 @@ class BookingController extends Controller
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
             $response = curl_exec($ch);
-            dd($response);
             curl_close($ch);
         } catch (\Throwable $th) {
             throw $th;
