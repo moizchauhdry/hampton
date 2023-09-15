@@ -73,7 +73,7 @@ const deleteBooking = (id) => {
                                     <td class="px-6 py-4">
                                         ${{ booking.price }}
                                     </td>
-                                    <td class="px-6 py-4" style="width: 200px;">
+                                    <td class="px-6 py-4" style="width: 150px;">
                                         {{ booking.booking_date }}
                                     </td>
                                     <td style="width: 400px;">
