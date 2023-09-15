@@ -52,7 +52,7 @@ const deleteBooking = (id) => {
                                     </th>
                                     <th scope="col" class="px-6 py-3">Price</th>
                                     <th scope="col" class="px-6 py-3">Date</th>
-                                    <th scope="col" class="px-6 py-3"></th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -73,10 +73,10 @@ const deleteBooking = (id) => {
                                     <td class="px-6 py-4">
                                         ${{ booking.price }}
                                     </td>
-                                    <td class="px-6 py-4">
+                                    <td class="px-6 py-4" style="width: 200px;">
                                         {{ booking.booking_date }}
                                     </td>
-                                    <td class="px-6 py-4">
+                                    <td style="width: 400px;">
                                         <Link
                                             class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-2 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-1 mr-2 mb-2 dark:focus:ring-yellow-900"
                                             :href="route('booking.edit', booking.id)">Edit</Link>
@@ -91,10 +91,10 @@ const deleteBooking = (id) => {
                                             SMS</a>
 
 
-                                        <button @click="deleteBooking(booking.id)"
-                                            class="mt-2 focus:outline-none text-white bg-red-600 hover:bg-red-500 focus:ring-2 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-1 mr-2 mb-2 dark:focus:ring-red-900">
+                                        <a href="#" @click="deleteBooking(booking.id)"
+                                            class="mt-4 focus:outline-none text-white bg-red-600 hover:bg-red-500 focus:ring-2 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-1 mr-2 mb-2 dark:focus:ring-red-900">
                                             Delete
-                                        </button>
+                                        </a>
                                     </td>
                                 </tr>
                             </tbody>
