@@ -80,20 +80,20 @@ const deleteBooking = (id) => {
                                     </td>
                                     <td class="px-6 py-4">
                                         <Link
-                                            class="text-white bg-yellow-400 hover:bg-yellow-600 focus:ring-4 focus:ring-yellow-100 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-yellow-400 dark:hover:bg-yellow-600 focus:outline-none dark:focus:ring-yellow-600"
+                                            class="text-white bg-yellow-400 hover:bg-yellow-600 focus:ring-4 focus:ring-yellow-100 font-medium rounded-lg text-sm px-3 py-2 mr-2 mb-2 dark:bg-yellow-400 dark:hover:bg-yellow-600 focus:outline-none dark:focus:ring-yellow-600"
                                             :href="route('booking.edit', booking.id)">Edit</Link>
 
                                         <a :href="route('booking.pdf', booking.id)"
-                                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                                             target="_blank">Invoice</a>
 
                                         <a :href="route('booking.sms', booking.id)"
-                                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">SMS</a>
+                                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">SMS</a>
 
                                     </td>
                                     <td>
                                         <a href="#" @click="deleteBooking(booking.id)"
-                                            class="text-white bg-blue-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">
+                                            class="text-white bg-blue-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">
                                             Delete
                                         </a>
                                     </td>
