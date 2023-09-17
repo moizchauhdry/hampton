@@ -36,7 +36,9 @@ const deleteBooking = (id) => {
 
         <div class="py-6 px-3">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+               
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+
                     <div class="relative overflow-x-auto">
                         <table class="w-full text-sm text-left text-gray-500 light:text-gray-400">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50 light:bg-gray-700 light:text-gray-400">
@@ -52,7 +54,7 @@ const deleteBooking = (id) => {
                                     </th>
                                     <th scope="col" class="px-6 py-3">Price</th>
                                     <th scope="col" class="px-6 py-3">Date</th>
-                                    <th scope="col"></th>
+                                    <th scope="col" class="px-6 py-3" colspan="2">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -73,29 +75,29 @@ const deleteBooking = (id) => {
                                     <td class="px-6 py-4">
                                         ${{ booking.price }}
                                     </td>
-                                    <td class="px-6 py-4" style="width: 150px;">
+                                    <td class="px-6 py-4">
                                         {{ booking.booking_date }}
                                     </td>
-                                    <td style="width: 400px;">
+                                    <td class="px-6 py-4">
                                         <Link
-                                            class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-2 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-1 mr-2 mb-2 dark:focus:ring-yellow-900"
+                                            class="text-white bg-yellow-400 hover:bg-yellow-600 focus:ring-4 focus:ring-yellow-100 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-yellow-400 dark:hover:bg-yellow-600 focus:outline-none dark:focus:ring-yellow-600"
                                             :href="route('booking.edit', booking.id)">Edit</Link>
 
                                         <a :href="route('booking.pdf', booking.id)"
-                                            class="focus:outline-none text-white bg-purple-500 hover:bg-purple-600 focus:ring-2 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-1 mr-2 mb-2 dark:focus:ring-purple-900"
+                                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                                             target="_blank">Invoice</a>
 
-
                                         <a :href="route('booking.sms', booking.id)"
-                                            class="focus:outline-none text-white bg-green-500 hover:bg-green-600 focus:ring-2 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-1 mr-2 mb-2 dark:focus:ring-green-900">
-                                            SMS</a>
+                                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">SMS</a>
 
-
+                                    </td>
+                                    <td>
                                         <a href="#" @click="deleteBooking(booking.id)"
-                                            class="mt-4 focus:outline-none text-white bg-red-600 hover:bg-red-500 focus:ring-2 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-1 mr-2 mb-2 dark:focus:ring-red-900">
+                                            class="text-white bg-blue-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">
                                             Delete
                                         </a>
                                     </td>
+
                                 </tr>
                             </tbody>
                         </table>
