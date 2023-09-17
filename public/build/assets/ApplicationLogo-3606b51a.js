@@ -1,0 +1,1 @@
+import{o as n,f as r}from"./app-90f48b56.js";const _="/build/assets/logo-b01630e2.png",a=(o,t)=>{const c=o.__vccOpts||o;for(const[e,s]of t)c[e]=s;return c},i={},p={src:_,alt:""};function l(o,t){return n(),r("img",p)}const m=a(i,[["render",l]]);export{m as A};
