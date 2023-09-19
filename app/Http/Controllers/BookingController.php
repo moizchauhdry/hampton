@@ -98,7 +98,7 @@ class BookingController extends Controller
         try {
 
             $booking_date = date('m/d/Y h:i A', strtotime($booking->booking_date));
-            $payment_url = 'https://app.hamptonschauffeur.com/payment/checkout.php?pickup=' . $booking->pickup . "&&destination=" . $booking->destination . ' Booking Date: ' . $booking_date . '&&amount=' . $booking->total_price;
+            $payment_url = 'https://app.hamptonschauffeur.com/payment/checkout.php?pickup=' . $booking->pickup . "&&destination=" . $booking->destination . '&&Booking Date: ' . $booking_date . '&&amount=' . $booking->total_price;
 
             $data = [
                 "personalizations" => [
