@@ -97,8 +97,8 @@ class BookingController extends Controller
     {
         try {
 
-            $booking_date = date('m/d/Y h:i A', strtotime($booking->booking_date));
-            $payment_url = 'https://app.hamptonschauffeur.com/payment/checkout.php?pickup=' . $booking->pickup . "&&destination=" . $booking->destination . '&&Booking Date: ' . $booking_date . '&&amount=' . $booking->total_price;
+            $booking_date = date('m/d/Y', strtotime($booking->booking_date));
+            $payment_url = 'https://app.hamptonschauffeur.com/payment/checkout.php?pickup=' . $booking->pickup . "&&destination=" . $booking->destination . '&&booking_date: ' . $booking_date . '&&amount=' . $booking->total_price;
 
             $data = [
                 "personalizations" => [
@@ -161,8 +161,8 @@ class BookingController extends Controller
     {
         try {
             $booking = Booking::find($id);
-            $booking_date = date('m/d/Y h:i A', strtotime($booking->booking_date));
-            $payment_url = 'https://app.hamptonschauffeur.com/payment/checkout.php?pickup=' . $booking->pickup . "&&destination=" . $booking->destination . '&&Booking Date=' . $booking_date . '&&amount=' . $booking->total_price;
+            $booking_date = date('m/d/Y', strtotime($booking->booking_date));
+            $payment_url = 'https://app.hamptonschauffeur.com/payment/checkout.php?pickup=' . $booking->pickup . "&&destination=" . $booking->destination . '&&booking_date=' . $booking_date . '&&amount=' . $booking->total_price;
 
             $username = 'ACd250ef8c6843ce407b2ec06c761b609a';
             $password = 'efe656ccabaf7e240bdb8fbfa940f83c';
